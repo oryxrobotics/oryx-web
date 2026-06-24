@@ -89,7 +89,7 @@ a { color: var(--green-mid); text-decoration: none; }
 .sec { padding: 84px 0; }
 .sec-sand { background: var(--sand-2); border-top: 1px solid var(--sand-dark); border-bottom: 1px solid var(--sand-dark); }
 .sec-dark { background: linear-gradient(180deg, var(--green) 0%, var(--green-deep) 100%); color: #eef0e9; }
-.sec-dark h2, .sec-dark h3 { color: #fff; }
+.sec.sec-dark h2, .sec.sec-dark h3 { color: #fff; }
 .sec-dark .sec-lead { color: rgba(238,240,233,.86); }
 .sec-dark .sec-lead strong { color: #fff; }
 
