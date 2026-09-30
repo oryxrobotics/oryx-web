@@ -1,289 +1,521 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Oryx Robotics — Humanoids for hazard duty</title>
-  <meta name="description" content="Oryx trains humanoids to run the inspection rounds people shouldn't — finding faults before they become failures across the plants, pipelines and substations of the Gulf. Supervised autonomy, per robot per year." />
-  <meta property="og:title" content="Oryx Robotics — Humanoids for hazard duty" />
-  <meta property="og:description" content="Industrial humanoids for hazardous inspection. Starting with the operator round, starting in Saudi Arabia." />
-  <meta property="og:type" content="website" />
-  <link rel="icon" href="assets/img/mark.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ORYX — Robot-Agnostic Middleware for the Physical AI Era</title>
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+  body{margin:0;background-color:#0D0F12;background-image:radial-gradient(rgba(255,255,255,0.045) 1px, transparent 1px);background-size:28px 28px;font-family:'IBM Plex Sans',sans-serif;color:#F2EFE9;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;margin:0;}
+  ::selection{background:#C98A4B;color:#0D0F12;}
+  .navlink{color:#9AA1AC;font-size:14px;transition:color .15s ease;}
+  .navlink:hover{color:#F2EFE9;}
+  .stat-card:hover{border-color:rgba(201,138,75,0.45);}
+  .grow-card{transition:transform .18s ease,border-color .18s ease;}
+  .grow-card:hover{transform:translateY(-3px);border-color:rgba(201,138,75,0.4);}
+  .askbtn:hover{background:#E0A263;}
+  a[aria-label$="on LinkedIn"]{transition:transform .15s ease,box-shadow .15s ease;}
+  a[aria-label$="on LinkedIn"]:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,0.35);}
+  @media (max-width:860px){
+    .hide-mobile{display:none !important;}
+    .stack-mobile{flex-direction:column !important;}
+    .grid-2{grid-template-columns:1fr !important;}
+    .grid-3{grid-template-columns:1fr !important;}
+    .grid-4{grid-template-columns:1fr 1fr !important;}
+    .hero-title{font-size:44px !important;}
+    .section-pad{padding-left:24px !important;padding-right:24px !important;}
+  }
+
+</style>
 </head>
 <body>
+<div style="width:100%;min-height:100vh;background:#0D0F12;box-sizing:border-box;">
 
-  <!-- ============ HEADER ============ -->
-  <header class="nav" id="top">
-    <div class="nav-in">
-      <a class="brand" href="#top" aria-label="Oryx Robotics">
-        <svg class="mark" viewBox="0 0 400 400" aria-hidden="true"><g fill="currentColor">
-          <polygon points="146,226 192,226 142,52 106,64"/><polygon points="254,226 208,226 258,52 294,64"/>
-          <path d="M112 226 L288 226 L312 258 L312 312 L260 372 L140 372 L88 312 L88 258 Z"/>
-          <rect class="eye" x="128" y="270" width="58" height="26" rx="5"/><rect class="eye" x="214" y="270" width="58" height="26" rx="5"/>
-        </g></svg>
-        <span class="brand-word">ORYX</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#problem">The problem</a>
-        <a href="#how">How it works</a>
-        <a href="#robot">ORYX-01</a>
-        <a href="#economics">Economics</a>
-        <a href="#why">Why Oryx</a>
-      </nav>
-      <a class="btn btn-pri nav-cta" href="#contact">Request a site visit</a>
-      <button class="menubtn" id="menubtn" aria-label="Open menu">☰</button>
-    </div>
-  </header>
-
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="dot"></span> Industrial humanoids · Built for the Gulf</div>
-        <h1>Humanoids for<br><span class="hl">hazard duty.</span></h1>
-        <p class="lead">Oryx trains humanoids to run the inspection rounds people shouldn't — finding faults before they become failures across the plants, pipelines and substations of Saudi Arabia and the Gulf.</p>
-        <div class="hero-cta">
-          <a class="btn btn-pri" href="#contact">Request a site visit</a>
-          <a class="btn btn-ghost" href="#how">See how it works →</a>
-        </div>
-        <div class="hero-foot">Supervised autonomy · per robot, per year · NVIDIA&nbsp;Inception member</div>
+  <!-- NAV -->
+  <div style="position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(13,15,18,0.85);border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div style="max-width:1180px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:0.5px;">ORYX</div>
+      <div class="hide-mobile" style="display:flex;gap:32px;align-items:center;">
+        <a class="navlink" href="#problem">Problem</a>
+        <a class="navlink" href="#solution">Platform</a>
+        <a class="navlink" href="#sovereign">Sovereign</a>
+        <a class="navlink" href="#hardware">Hardware</a>
+        <a class="navlink" href="#ecosystem">Ecosystem</a>
+        <a class="navlink" href="#team">Team</a>
       </div>
-      <div class="hero-art">
-        <img src="assets/img/oryx-01.png" alt="ORYX-01, the desert-green industrial humanoid" width="520" height="980" />
-        <span class="hero-tag">ORYX-01 · concept livery</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ TRUST STRIP ============ -->
-  <div class="trust">
-    <div class="trust-in">
-      <span>NVIDIA Inception</span><i></i>
-      <span>GO AI Hub corridor</span><i></i>
-      <span>Vision 2030</span><i></i>
-      <span>Saudi Arabia &amp; the Gulf</span>
+      <a href="#ask" style="background:#C98A4B;color:#0D0F12;font-size:14px;font-weight:600;padding:10px 20px;border-radius:3px;">The Raise</a>
     </div>
   </div>
 
-  <!-- ============ PROBLEM ============ -->
-  <section class="sec" id="problem">
-    <div class="wrap">
-      <div class="kick"><span class="kick-num">01</span><span class="kick-cat">The problem</span></div>
-      <h2>The round that can't be skipped.</h2>
-      <p class="sec-lead">Every refinery, plant, substation and pipeline station runs <strong>operator rounds</strong> — fixed walking routes, two to four times a shift, by two-person buddy crews in 50&nbsp;°C heat. Roughly 95% of them find nothing. Yet they're HSE-mandated and can't be skipped. High-frequency, fixed-route, mostly-nothing, can't-skip, dangerous, expensive.</p>
-      <div class="stats">
-        <div class="stat"><div class="stat-n">50&nbsp;°C</div><div class="stat-l">Summer heat on the route — with dust, and 2&nbsp;a.m. rounds nobody wants</div></div>
-        <div class="stat"><div class="stat-n">$10–16K</div><div class="stat-l">Per route, per month — a two-person crew, 13–18 man-hours a day</div></div>
-        <div class="stat"><div class="stat-n">~95%</div><div class="stat-l">Of rounds find nothing — but the one that does is why they run</div></div>
-        <div class="stat"><div class="stat-n">2–4×</div><div class="stat-l">A shift, every shift — the ritual that keeps the facility alive</div></div>
+  <!-- HERO -->
+  <div style="position:relative;overflow:hidden;">
+    <div class="hide-mobile" style="position:absolute;top:-260px;right:-160px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(201,138,75,0.16) 0%,rgba(201,138,75,0.05) 45%,transparent 72%);filter:blur(6px);pointer-events:none;"></div>
+    <div class="hide-mobile" style="position:absolute;bottom:-320px;left:-220px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(91,135,166,0.12) 0%,transparent 70%);filter:blur(6px);pointer-events:none;"></div>
+  <div class="section-pad" style="position:relative;max-width:1180px;margin:0 auto;padding:120px 40px 100px 40px;">
+    <div style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.14);border-radius:20px;padding:6px 14px;margin-bottom:36px;">
+      <div style="width:6px;height:6px;border-radius:50%;background:#7FBF8F;"></div>
+      <span style="font-size:13px;color:#9AA1AC;">Investor Briefing · Q4 2026</span>
+    </div>
+    <h1 class="hero-title" style="font-size:68px;line-height:1.05;font-weight:700;max-width:820px;letter-spacing:-1px;">
+      Robot-agnostic middleware for the physical AI era.
+    </h1>
+    <p style="font-size:21px;color:#C6CAD2;max-width:620px;margin:28px 0 0 0;line-height:1.5;font-family:'IBM Plex Mono',monospace;font-size:18px;">
+      One prompt. Many robots. No cloud lock-in.
+    </p>
+    <p style="font-size:16px;color:#9AA1AC;max-width:640px;margin:22px 0 0 0;line-height:1.65;">
+      A developer describes a mission in plain language. ORYX turns it into mission parameters, contextual knowledge, and decision logic — then executes it on any supported robot, on any hardware, on-prem or entirely offline.
+    </p>
+    <div style="display:flex;gap:14px;margin-top:40px;flex-wrap:wrap;">
+      <a href="#solution" style="background:#C98A4B;color:#0D0F12;font-weight:600;font-size:15px;padding:14px 26px;border-radius:3px;">See how it works</a>
+      <a href="#ask" style="border:1px solid rgba(255,255,255,0.2);color:#F2EFE9;font-weight:500;font-size:15px;padding:14px 26px;border-radius:3px;">The raise</a>
+    </div>
+    <div style="display:flex;gap:36px;margin-top:64px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;">
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#63697A;letter-spacing:1px;">HQ</div><div style="font-size:15px;margin-top:4px;">New York, USA</div></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#63697A;letter-spacing:1px;">ARCHITECTURE</div><div style="font-size:15px;margin-top:4px;">European Union</div></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#63697A;letter-spacing:1px;">COMMERCIAL</div><div style="font-size:15px;margin-top:4px;">GCC</div></div>
+      <div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#63697A;letter-spacing:1px;">R&D</div><div style="font-size:15px;margin-top:4px;">Pakistan</div></div>
+    </div>
+  </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <div id="problem" class="section-pad" style="max-width:1180px;margin:0 auto;padding:80px 40px;border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#C98A4B;letter-spacing:1px;margin-bottom:14px;">THE PROBLEM</div>
+    <h2 style="font-size:36px;font-weight:600;max-width:680px;margin-bottom:48px;">Robotics AI is being built on rented ground.</h2>
+    <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div class="grow-card" style="background:#14171B;border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:30px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C98A4B" stroke-width="1.6"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <div style="font-size:17px;font-weight:600;margin-top:18px;">Proprietary lock-in</div>
+        <div style="font-size:14.5px;color:#9AA1AC;margin-top:10px;line-height:1.6;">Every hardware vendor ships a closed stack. Switch robots and you rewrite your entire software layer.</div>
+      </div>
+      <div class="grow-card" style="background:#14171B;border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:30px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C98A4B" stroke-width="1.6"><path d="M7 18a4 4 0 0 1-1-7.9A5.5 5.5 0 0 1 16.5 8 4.5 4.5 0 0 1 17 17"/><path d="M4 22l16-16" stroke="#8F5A2A"/></svg>
+        <div style="font-size:17px;font-weight:600;margin-top:18px;">Cloud dependency</div>
+        <div style="font-size:14.5px;color:#9AA1AC;margin-top:10px;line-height:1.6;">Cloud-dependent foundation-model workflows can be unavailable in denied, contested, or air-gapped environments.</div>
+      </div>
+      <div class="grow-card" style="background:#14171B;border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:30px;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C98A4B" stroke-width="1.6"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M8 7l3 9M16 7l-3 9"/></svg>
+        <div style="font-size:17px;font-weight:600;margin-top:18px;">No shared platform</div>
+        <div style="font-size:14.5px;color:#9AA1AC;margin-top:10px;line-height:1.6;">Integrators repeatedly rebuild the same capabilities instead of reusing a shared layer across platforms.</div>
       </div>
     </div>
-  </section>
+    <div style="font-size:14px;color:#63697A;margin-top:28px;">This slows adoption in defense, industrial, and sovereign environments.</div>
+  </div>
 
-  <!-- ============ SOLUTION ============ -->
-  <section class="sec sec-dark" id="solution">
-    <div class="wrap">
-      <div class="kick"><span class="kick-num">02</span><span class="kick-cat light">What we do</span></div>
-      <h2>Send the robot.</h2>
-      <p class="sec-lead">Oryx automates the operator round. The robot does the watching portion of that work — it never gets heatstroke, it works the 2&nbsp;a.m. round, and it produces a photographic audit trail no human round has ever produced. The robot is the employee. <strong>The software is the company.</strong></p>
-      <div class="phases">
-        <div class="phase phase-now">
-          <div class="phase-tag">NOW</div>
-          <h3>Watch</h3>
-          <p>Autonomous inspection rounds. Read gauges, scan for leaks, heat, corrosion and cracks — and log every anomaly with location, class, severity, confidence and imagery.</p>
+  <!-- SOLUTION -->
+  <div id="solution" style="position:relative;border-top:1px solid rgba(255,255,255,0.08);overflow:hidden;">
+    <svg class="hide-mobile" viewBox="0 0 1180 560" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.35;pointer-events:none;">
+      <g stroke="#5B87A6" stroke-width="1" opacity="0.12">
+        <line x1="0" y1="80" x2="1180" y2="80"/><line x1="0" y1="200" x2="1180" y2="200"/>
+        <line x1="0" y1="320" x2="1180" y2="320"/><line x1="0" y1="440" x2="1180" y2="440"/>
+        <line x1="150" y1="0" x2="150" y2="560"/><line x1="440" y1="0" x2="440" y2="560"/>
+        <line x1="740" y1="0" x2="740" y2="560"/><line x1="1030" y1="0" x2="1030" y2="560"/>
+      </g>
+      <circle cx="150" cy="200" r="3" fill="#C98A4B" opacity="0.3"/>
+      <circle cx="740" cy="320" r="3" fill="#5B87A6" opacity="0.3"/>
+      <circle cx="1030" cy="80" r="3" fill="#C98A4B" opacity="0.3"/>
+    </svg>
+    <div class="section-pad" style="position:relative;max-width:1180px;margin:0 auto;padding:80px 40px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#5B87A6;letter-spacing:1px;margin-bottom:14px;">THE SOLUTION</div>
+    <h2 style="font-size:36px;font-weight:600;max-width:720px;margin-bottom:14px;">ORYX — the operating layer for physical AI.</h2>
+    <p style="font-size:15.5px;color:#9AA1AC;max-width:680px;margin-bottom:56px;line-height:1.6;">New hardware means a new driver. No change to the reasoning layer, the API, or existing use cases.</p>
+
+    <div style="position:relative;">
+      <div class="hide-mobile" style="position:absolute;top:44px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,rgba(201,138,75,0.5),rgba(91,135,166,0.5));"></div>
+      <div class="grid-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;">
+
+        <div style="text-align:left;">
+          <div style="width:56px;height:56px;border-radius:50%;background:#14171B;border:1px solid rgba(201,138,75,0.4);display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C98A4B" stroke-width="1.6"><path d="M4 6h16M4 12h10M4 18h13"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:600;margin-top:16px;">Prompt</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:8px;line-height:1.55;">Developer describes the mission in natural language.</div>
         </div>
-        <div class="phase">
-          <div class="phase-tag">2027</div>
-          <h3>Touch</h3>
-          <p>Manipulation arrives — operate valves, clear simple obstructions, take samples. The round stops being only observation.</p>
+
+        <div style="text-align:left;">
+          <div style="width:56px;height:56px;border-radius:50%;background:#14171B;border:1px solid rgba(201,138,75,0.4);display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C98A4B" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:600;margin-top:16px;">Reasoning layer</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:8px;line-height:1.55;">Local or external LLM / VLM builds context and decision logic.</div>
         </div>
-        <div class="phase">
-          <div class="phase-tag">2028+</div>
-          <h3>Work</h3>
-          <p>On certified, all-weather platforms, the fleet takes on the heavier hazardous work — on the path to certified-zone operations.</p>
+
+        <div style="text-align:left;">
+          <div style="width:56px;height:56px;border-radius:50%;background:#14171B;border:1px solid rgba(91,135,166,0.4);display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B87A6" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:600;margin-top:16px;">Control API</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:8px;line-height:1.55;">Unified command layer — one interface for every robot.</div>
         </div>
+
+        <div style="text-align:left;">
+          <div style="width:56px;height:56px;border-radius:50%;background:#14171B;border:1px solid rgba(91,135,166,0.4);display:flex;align-items:center;justify-content:center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5B87A6" stroke-width="1.6"><path d="M9 3v4M15 3v4M4 8h16v12H4zM4 8l2-4h12l2 4"/></svg>
+          </div>
+          <div style="font-size:15px;font-weight:600;margin-top:16px;">Hardware drivers</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:8px;line-height:1.55;">Per-model brokers translate commands into native robot actions.</div>
+        </div>
+
       </div>
     </div>
-  </section>
-
-  <!-- ============ HOW IT WORKS ============ -->
-  <section class="sec" id="how">
-    <div class="wrap">
-      <div class="kick"><span class="kick-num">03</span><span class="kick-cat">How it works</span></div>
-      <h2>One operator. A fleet of robots.</h2>
-      <p class="sec-lead">Oryx is the autonomy layer — everything between a stock robot and a paid, audited inspection round. Supervised autonomy means a single human supervises an entire fleet from one screen, and signs off on what the robots find.</p>
-      <div class="flow">
-        <div class="flow-step"><span class="flow-n">1</span><h4>Walk the route</h4><p>Each Oryx runs the fixed round on schedule — day shift, night shift, the rounds people skip.</p></div>
-        <div class="flow-arr">→</div>
-        <div class="flow-step"><span class="flow-n">2</span><h4>Detect the anomaly</h4><p>Fine-tuned vision finds cracks, leaks, hotspots and out-of-range gauges, scored by confidence.</p></div>
-        <div class="flow-arr">→</div>
-        <div class="flow-step"><span class="flow-n">3</span><h4>Log the evidence</h4><p>Every finding becomes an audit record: location, class, severity, confidence, imagery.</p></div>
-        <div class="flow-arr">→</div>
-        <div class="flow-step"><span class="flow-n">4</span><h4>Report to one operator</h4><p>The fleet reports to a single console. People review and act — no one walks the route to find out.</p></div>
-      </div>
-      <div class="note">
-        <h5>The mind inside</h5>
-        <p>Every Oryx runs <strong>Islah AI</strong> — a vision-language-action model fine-tuned on Gulf conditions and backed by a classical-vision core. It sharpens with every round the fleet runs, on a growing body of Gulf inspection data nobody else has.</p>
-      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ============ PRODUCT / ORYX-01 ============ -->
-  <section class="sec sec-sand" id="robot">
-    <div class="wrap">
-      <div class="kick"><span class="kick-num">04</span><span class="kick-cat">The robot</span></div>
-      <div class="robot-grid">
-        <div class="robot-art">
-          <img src="assets/img/oryx-01-head.png" alt="ORYX-01 head — green horn-antennas and the orange Oryx mark" />
+  <!-- SOVEREIGN -->
+  <div id="sovereign" style="background:#111417;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div class="section-pad" style="max-width:1180px;margin:0 auto;padding:80px 40px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#C98A4B;letter-spacing:1px;margin-bottom:14px;">SOVEREIGN BY DESIGN</div>
+      <h2 style="font-size:36px;font-weight:600;max-width:680px;margin-bottom:48px;">Zero cloud dependency, by default.</h2>
+      <div class="grid-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;">
+        <div style="background:#111417;padding:28px;">
+          <div style="font-size:14.5px;font-weight:600;">Fully on-premise / air-gapped</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:10px;line-height:1.6;">LLM and VLM inference run locally on open models — no external API calls required to operate.</div>
         </div>
-        <div class="robot-copy">
-          <h2>Meet ORYX-01.</h2>
-          <p class="sec-lead">The desert-green industrial humanoid. One uniform livery turns any platform into one recognisable workforce — the signature horn-antennas double as the comms array for low-connectivity sites, and the orange mark rides on the chest.</p>
-          <ul class="ticks">
-            <li>Works 24/7 — the day shift, the night shift, and the 2&nbsp;a.m. round</li>
-            <li>Produces a photographic audit trail of every round</li>
-            <li>Hardware-agnostic — runs on the best platform for the zone</li>
-            <li>Each deployed robot is <em>an Oryx</em>, with a desert-survivor callsign — Saluki, Shaheen, Houbara</li>
-          </ul>
+        <div style="background:#111417;padding:28px;">
+          <div style="font-size:14.5px;font-weight:600;">Cloud-agnostic by design</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:10px;line-height:1.6;">Deploy on any cloud, a private data center, or entirely offline — no dependency on any single provider.</div>
         </div>
-      </div>
-
-      <h3 class="sub">A staged hardware path.</h3>
-      <div class="stages">
-        <div class="stage">
-          <div class="stage-when">Now</div>
-          <h4>Indoor &amp; non-classified zones</h4>
-          <p>Runs on the affordable, available Unitree&nbsp;G1 platform — for indoor and non-classified areas today.</p>
+        <div style="background:#111417;padding:28px;">
+          <div style="font-size:14.5px;font-weight:600;">Data stays inside the perimeter</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:10px;line-height:1.6;">In on-prem deployments, mission data, context, and reasoning remain inside the customer's environment.</div>
         </div>
-        <div class="stage">
-          <div class="stage-when">2027</div>
-          <h4>All-weather, outdoor</h4>
-          <p>An IP66 platform rated for dust and −20 to +55&nbsp;°C takes the round into the desert.</p>
-        </div>
-        <div class="stage">
-          <div class="stage-when">2028+</div>
-          <h4>Certified-zone partners</h4>
-          <p>Ex-certified partner platforms open the path to classified-zone operations.</p>
-        </div>
-      </div>
-      <p class="fineprint">The underlying platform is always disclosed as a component — “ORYX-01, on a Unitree G1 platform,” the way a robotaxi discloses its vehicle. We promise a staged path and ship what's proven at each step.</p>
-    </div>
-  </section>
-
-  <!-- ============ ECONOMICS ============ -->
-  <section class="sec" id="economics">
-    <div class="wrap">
-      <div class="kick"><span class="kick-num">05</span><span class="kick-cat">The economics</span></div>
-      <h2>Half the cost. None of the heatstroke.</h2>
-      <p class="sec-lead">Customers don't want to buy and operate a robot — they want the round done. Oryx delivers inspection turnkey: a finance partner owns the hardware, Oryx operates it, and you pay one annual fee for the outcome.</p>
-
-      <div class="price-cards">
-        <div class="price-card">
-          <div class="price-kind">Indoor · G1-class</div>
-          <p>For non-classified zones — on duty around the clock, at a fraction of a human crew.</p>
-        </div>
-        <div class="price-card price-card-hl">
-          <div class="price-kind">All-weather · IP66-class</div>
-          <p>Built for the field — works the desert, through the night, and never stops.</p>
-        </div>
-      </div>
-
-      <ul class="ticks">
-        <li><em>A fraction of a human crew</em> — no recruitment, housing, rotation or hazard pay; one fee, fully loaded.</li>
-        <li><em>Never off shift</em> — 24/7, through the night and the +55&nbsp;°C desert summer.</li>
-        <li><em>A perfect audit trail</em> — every round logged with location, class, severity and imagery.</li>
-        <li><em>Turnkey and asset-light</em> — no capex and no fleet to run; you buy the outcome, not the robot.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ WHY ORYX ============ -->
-  <section class="sec sec-dark" id="why">
-    <div class="wrap">
-      <div class="kick"><span class="kick-num">06</span><span class="kick-cat light">Why Oryx</span></div>
-      <h2>Built for the Gulf.</h2>
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-ic">⬡</div>
-          <h3>Gulf-native channel</h3>
-          <p>We enter through the GO AI Hub corridor — Saudi Arabia's national AI gateway and its state-backed channel into the operators that run the Kingdom. The kind of entry a Zurich or Pittsburgh competitor has to build from zero.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-ic">▦</div>
-          <h3>Fleet-scale economics</h3>
-          <p>Western inspection robots don't scale to fleets in the Gulf. Oryx prices per robot, per year — turnkey, asset-light, and cash-positive per deal.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-ic">◇</div>
-          <h3>Hardware-agnostic</h3>
-          <p>A hardware abstraction layer sits between the autonomy stack and any robot. New platform, new adapter — not a rewrite. We run on the best hardware for the zone.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-ic">◈</div>
-          <h3>Data residency</h3>
-          <p>SDAIA-aligned, in-Kingdom data handling — built for how the Gulf expects industrial data to be governed.</p>
-        </div>
-      </div>
-
-      <div class="banner">
-        <span class="banner-lbl">What you can hold us to</span>
-        <p>Supervised autonomy. A staged hardware path. Scoped claims you can watch run on your own routes — what we promise is what we deploy.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CTA ============ -->
-  <section class="sec cta" id="contact">
-    <div class="wrap cta-in">
-      <h2>Automating the world's most dangerous jobs.</h2>
-      <p>We're deploying the first inspection pilots in Saudi Arabia now. Ask for a site visit — a 90-minute, on-site assessment of one of your routes.</p>
-      <div class="cta-btns">
-        <a class="btn btn-pri" href="mailto:hello@oryx.bot?subject=Site%20visit%20request%20%E2%80%94%20Oryx">Request a site visit</a>
-        <a class="btn btn-ghost-d" href="mailto:hello@oryx.bot?subject=Oryx%20%E2%80%94%20intro">hello@oryx.bot</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="foot">
-    <div class="wrap foot-in">
-      <div class="foot-brand">
-        <svg class="mark" viewBox="0 0 400 400" aria-hidden="true"><g fill="currentColor">
-          <polygon points="146,226 192,226 142,52 106,64"/><polygon points="254,226 208,226 258,52 294,64"/>
-          <path d="M112 226 L288 226 L312 258 L312 312 L260 372 L140 372 L88 312 L88 258 Z"/>
-          <rect class="eye-d" x="128" y="270" width="58" height="26" rx="5"/><rect class="eye-d" x="214" y="270" width="58" height="26" rx="5"/>
-        </g></svg>
-        <div>
-          <div class="foot-word">ORYX <span class="ar">أوريكس</span></div>
-          <div class="foot-tag">Trained for hazard duty.</div>
-        </div>
-      </div>
-      <div class="foot-cols">
-        <div class="foot-col">
-          <span>Company</span>
-          <a href="#problem">The problem</a>
-          <a href="#how">How it works</a>
-          <a href="#robot">ORYX-01</a>
-        </div>
-        <div class="foot-col">
-          <span>More</span>
-          <a href="#economics">Economics</a>
-          <a href="#why">Why Oryx</a>
-          <a href="mailto:hello@oryx.bot">Contact</a>
+        <div style="background:#111417;padding:28px;">
+          <div style="font-size:14.5px;font-weight:600;">Built for disconnected operations</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:10px;line-height:1.6;">Designed to support operation when commercial cloud connectivity is unavailable or cannot be guaranteed.</div>
         </div>
       </div>
     </div>
-    <div class="wrap foot-legal">
-      <span>© 2026 Oryx Robotics · NVIDIA Inception member</span>
-      <span class="foot-entity">Oryx Robotics is operated by Islah AI Corp, a Delaware corporation.</span>
-    </div>
-  </footer>
+  </div>
 
-  <script src="assets/app.js"></script>
+  <!-- HARDWARE -->
+  <div id="hardware" class="section-pad" style="max-width:1180px;margin:0 auto;padding:80px 40px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#5B87A6;letter-spacing:1px;margin-bottom:14px;">HARDWARE STRATEGY</div>
+    <h2 style="font-size:36px;font-weight:600;max-width:680px;margin-bottom:14px;">One middleware. Every robot.</h2>
+    <p style="font-size:15.5px;color:#9AA1AC;max-width:680px;margin-bottom:48px;line-height:1.6;">The driver layer is the only thing that changes per robot — add a new hardware model without touching the reasoning layer, the Control API, or any existing use case.</p>
+    <div class="grid-3 stack-mobile" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div class="grow-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:28px;background:#14171B;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7FBF8F;letter-spacing:1px;">NOW</div>
+        <div style="font-size:19px;font-weight:600;margin-top:12px;">Unitree R1</div>
+        <div style="font-size:13.5px;color:#C98A4B;margin-top:4px;">$5.9K · entry point</div>
+        <div style="font-size:13.5px;color:#9AA1AC;margin-top:14px;line-height:1.6;">Low-cost platform to build and prove the core middleware — hands-on, fast iteration.</div>
+      </div>
+      <div class="grow-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:28px;background:#14171B;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C98A4B;letter-spacing:1px;">NEXT</div>
+        <div style="font-size:19px;font-weight:600;margin-top:12px;">DR02-class industrial</div>
+        <div style="font-size:13.5px;color:#C98A4B;margin-top:4px;">Enterprise pricing · heavy-duty driver library</div>
+        <div style="font-size:13.5px;color:#9AA1AC;margin-top:14px;line-height:1.6;">Same stack, new driver. Industrial-grade capability with zero core rework.</div>
+      </div>
+      <div class="grow-card" style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:28px;background:#14171B;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B87A6;letter-spacing:1px;">ONGOING</div>
+        <div style="font-size:19px;font-weight:600;margin-top:12px;">Additional robot platforms</div>
+        <div style="font-size:13.5px;color:#C98A4B;margin-top:4px;">One dedicated driver per platform</div>
+        <div style="font-size:13.5px;color:#9AA1AC;margin-top:14px;line-height:1.6;">Each new platform connects through a dedicated driver; the core reasoning layer remains unchanged.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ECOSYSTEM -->
+  <div id="ecosystem" style="background:#111417;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div class="section-pad" style="max-width:1180px;margin:0 auto;padding:80px 40px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#C98A4B;letter-spacing:1px;margin-bottom:14px;">ECOSYSTEM</div>
+      <h2 style="font-size:36px;font-weight:600;max-width:680px;margin-bottom:14px;">A marketplace for robot intelligence.</h2>
+      <p style="font-size:15.5px;color:#9AA1AC;max-width:680px;margin-bottom:48px;line-height:1.6;">Developers are not locked into our roadmap. They build what they need — or reuse what already exists.</p>
+      <div class="grid-3 stack-mobile" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(255,255,255,0.08);border-left:1px solid rgba(255,255,255,0.08);">
+        <div style="padding:28px;border-right:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#63697A;">01</div>
+          <div style="font-size:17px;font-weight:600;margin-top:10px;">Build</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:10px;line-height:1.6;">Any developer creates a niche use case with a single detailed prompt — no low-level robotics code required.</div>
+        </div>
+        <div style="padding:28px;border-right:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#63697A;">02</div>
+          <div style="font-size:17px;font-weight:600;margin-top:10px;">Publish</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:10px;line-height:1.6;">Capabilities are packaged as plugins and listed on the ORYX App Store for other teams to license.</div>
+        </div>
+        <div style="padding:28px;border-bottom:1px solid rgba(255,255,255,0.08);">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#63697A;">03</div>
+          <div style="font-size:17px;font-weight:600;margin-top:10px;">Reuse &amp; earn</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:10px;line-height:1.6;">Future customers browse the capability library, license what fits, and the original developer earns a share.</div>
+        </div>
+      </div>
+      <div style="font-size:14px;color:#63697A;margin-top:24px;">Every use case built on ORYX compounds the value of the platform for the next developer.</div>
+    </div>
+  </div>
+
+  <!-- BUSINESS MODEL -->
+  <div class="section-pad" style="max-width:1180px;margin:0 auto;padding:80px 40px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#5B87A6;letter-spacing:1px;margin-bottom:14px;">BUSINESS MODEL</div>
+    <h2 style="font-size:36px;font-weight:600;max-width:680px;margin-bottom:48px;">Two revenue engines, one platform.</h2>
+    <div class="grid-2 stack-mobile" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div style="border:1px solid rgba(201,138,75,0.3);border-radius:6px;padding:32px;background:linear-gradient(160deg,rgba(201,138,75,0.08),transparent);">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C98A4B;letter-spacing:1px;">PLATFORM REVENUE</div>
+        <div style="font-size:19px;font-weight:600;margin-top:14px;">Direct licensing</div>
+        <div style="font-size:14px;color:#9AA1AC;margin-top:12px;line-height:1.65;">Enterprise, OEM, and government customers license the ORYX middleware core directly — per-deployment or per-fleet.</div>
+      </div>
+      <div style="border:1px solid rgba(91,135,166,0.3);border-radius:6px;padding:32px;background:linear-gradient(160deg,rgba(91,135,166,0.08),transparent);">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B87A6;letter-spacing:1px;">ECOSYSTEM REVENUE</div>
+        <div style="font-size:19px;font-weight:600;margin-top:14px;">App Store revenue share</div>
+        <div style="font-size:14px;color:#9AA1AC;margin-top:12px;line-height:1.65;">Every plugin and capability sold through the ORYX App Store generates a shared revenue split with the third-party developer.</div>
+      </div>
+    </div>
+    <div style="font-size:14px;color:#63697A;margin-top:24px;">Licensing sells sovereignty and reach. The App Store turns every customer's developer into a distribution channel.</div>
+  </div>
+
+  <!-- MARKET -->
+  <div style="background:#111417;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div class="section-pad" style="max-width:1180px;margin:0 auto;padding:80px 40px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#C98A4B;letter-spacing:1px;margin-bottom:14px;">MARKET OPPORTUNITY</div>
+      <h2 style="font-size:36px;font-weight:600;max-width:680px;margin-bottom:48px;">Riding the physical AI wave.</h2>
+      <div class="grid-3 stack-mobile" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div class="stat-card" style="border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:32px;transition:border-color .15s ease;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;color:#C98A4B;">$8.3B</div>
+          <div style="font-size:14px;color:#9AA1AC;margin-top:8px;">Global humanoid robot market, 2026</div>
+        </div>
+        <div class="stat-card" style="border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:32px;transition:border-color .15s ease;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;color:#C98A4B;">$39B</div>
+          <div style="font-size:14px;color:#9AA1AC;margin-top:8px;">Projected market size by 2030</div>
+        </div>
+        <div class="stat-card" style="border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:32px;transition:border-color .15s ease;">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;color:#C98A4B;">53%</div>
+          <div style="font-size:14px;color:#9AA1AC;margin-top:8px;">CAGR, 2026–2030</div>
+        </div>
+      </div>
+      <p style="font-size:14.5px;color:#9AA1AC;margin-top:32px;max-width:760px;line-height:1.65;">Entry-level humanoid platforms are already approaching the $5–10K range. As hardware costs fall, the software layer becomes increasingly important to deployment — and ORYX is positioned at that inflection point, as a robot-agnostic middleware layer designed to work across hardware vendors.</p>
+      <div style="font-size:12.5px;color:#63697A;margin-top:16px;">Source: The Business Research Company, Humanoid Robot Global Market Report 2026.</div>
+    </div>
+  </div>
+
+  <!-- PROTOTYPE -->
+  <div class="section-pad" style="max-width:1180px;margin:0 auto;padding:80px 40px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#5B87A6;letter-spacing:1px;margin-bottom:14px;">WORKING PROTOTYPE</div>
+    <h2 style="font-size:36px;font-weight:600;max-width:680px;margin-bottom:14px;">Proven in simulation. Physical deployment next.</h2>
+    <p style="font-size:15.5px;color:#9AA1AC;max-width:720px;margin-bottom:40px;line-height:1.6;">Simulation POC built on NVIDIA Isaac Sim and AWS. The demonstrated workflow autonomously navigates simulated environments, identifies objects, completes multi-step inspection tasks, and generates structured reports. Field performance remains to be validated.</p>
+    <div class="grid-4 stack-mobile" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:36px;">
+      <div><div style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;">92–99%</div><div style="font-size:13px;color:#9AA1AC;margin-top:6px;">Detection accuracy</div></div>
+      <div><div style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;">210</div><div style="font-size:13px;color:#9AA1AC;margin-top:6px;">Items tested</div></div>
+      <div><div style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;">47</div><div style="font-size:13px;color:#9AA1AC;margin-top:6px;">Categories</div></div>
+      <div><div style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;">10 days</div><div style="font-size:13px;color:#9AA1AC;margin-top:6px;">POC build time</div></div>
+    </div>
+    <a href="https://youtu.be/fE5Jo4h-nlw" style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.18);border-radius:4px;padding:12px 20px;font-size:14px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#C98A4B"><path d="M8 5v14l11-7z"/></svg>
+      Watch the live demo
+    </a>
+    <div style="font-size:13.5px;color:#63697A;margin-top:20px;">Next: port ORYX middleware onto the physical Unitree R1 → first controlled industrial pilot.</div>
+  </div>
+
+  <!-- TEAM & FOOTPRINT -->
+  <div id="team" style="background:#111417;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);">
+    <div class="section-pad" style="max-width:1180px;margin:0 auto;padding:80px 40px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#C98A4B;letter-spacing:1px;margin-bottom:14px;">TEAM &amp; STRUCTURE</div>
+      <h2 style="font-size:36px;font-weight:600;max-width:680px;margin-bottom:14px;">Built global. Designed for deployment anywhere.</h2>
+      <p style="font-size:15.5px;color:#9AA1AC;max-width:720px;margin-bottom:56px;line-height:1.6;">A distributed structure by design: strategy near capital, architecture near deep engineering talent, commercial focus near sovereign buyers, and R&amp;D where execution scales.</p>
+
+      <!-- world map footprint graphic -->
+      <div style="position:relative;padding:8px 0 40px 0;">
+        <svg viewBox="0 0 1000 500" style="width:100%;height:auto;display:block;" role="img" aria-label="World map showing ORYX hubs in New York, Bucharest, Abu Dhabi, and Lahore">
+          <!-- landmasses, plotted from real coordinates via an equirectangular projection -->
+          <g fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.6" opacity="0.1">
+            <!-- North America -->
+            <polygon points="42,69 222,56 353,114 294,136 278,181 231,178 194,186 169,156 156,117"/>
+            <!-- Greenland -->
+            <polygon points="389,19 431,56 375,83 333,42"/>
+            <!-- South America -->
+            <polygon points="292,222 403,264 392,292 353,333 319,361 311,403 303,342 286,283 278,244"/>
+            <!-- British Isles -->
+            <polygon points="478,90 500,85 505,105 485,112 475,100"/>
+            <!-- Europe -->
+            <polygon points="556,56 600,95 575,130 564,150 486,150 472,120 500,75"/>
+            <!-- Africa -->
+            <polygon points="483,153 589,161 642,219 617,250 550,344 542,314 508,236 453,208 472,167"/>
+            <!-- Arabian Peninsula -->
+            <polygon points="606,161 633,169 656,178 650,203 622,214 617,200 597,172"/>
+            <!-- Asia -->
+            <polygon points="597,142 639,125 681,117 750,56 944,61 944,97 853,144 833,153 764,206 686,153 667,167"/>
+            <!-- Indian subcontinent -->
+            <polygon points="686,181 706,162 714,172 750,183 714,228 703,197"/>
+            <!-- Southeast Asia -->
+            <polygon points="764,206 792,222 783,244 750,235"/>
+            <!-- Japan -->
+            <polygon points="883,150 894,131 864,158"/>
+            <!-- Australia -->
+            <polygon points="853,289 867,281 894,281 925,325 903,356 883,347 822,339 817,311 839,300"/>
+          </g>
+          <!-- arcs from HQ (New York) to each hub -->
+          <g fill="none" stroke="#C98A4B" stroke-width="1.4" stroke-dasharray="1 6" stroke-linecap="round" opacity="0.75">
+            <path d="M294,137 Q430,60 573,127"/>
+            <path d="M294,137 Q470,105 651,182"/>
+            <path d="M294,137 Q495,95 707,162"/>
+          </g>
+          <!-- hub markers, placed at true lat/long -->
+          <g>
+            <circle cx="294" cy="137" r="10" fill="none" stroke="#C98A4B" stroke-width="1" opacity="0.35"/>
+            <circle cx="294" cy="137" r="5.5" fill="#C98A4B"/>
+            <text x="294" y="117" text-anchor="middle" fill="#F2EFE9" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="500">HQ</text>
+            <text x="294" y="165" text-anchor="middle" fill="#9AA1AC" font-family="IBM Plex Sans, sans-serif" font-size="12">New York</text>
+          </g>
+          <g>
+            <circle cx="573" cy="127" r="10" fill="none" stroke="#5B87A6" stroke-width="1" opacity="0.35"/>
+            <circle cx="573" cy="127" r="5.5" fill="#5B87A6"/>
+            <text x="573" y="107" text-anchor="middle" fill="#F2EFE9" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="500">EU</text>
+            <text x="573" y="155" text-anchor="middle" fill="#9AA1AC" font-family="IBM Plex Sans, sans-serif" font-size="12">Bucharest</text>
+          </g>
+          <g>
+            <circle cx="651" cy="182" r="10" fill="none" stroke="#5B87A6" stroke-width="1" opacity="0.35"/>
+            <circle cx="651" cy="182" r="5.5" fill="#5B87A6"/>
+            <text x="651" y="162" text-anchor="middle" fill="#F2EFE9" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="500">GCC</text>
+            <text x="651" y="210" text-anchor="middle" fill="#9AA1AC" font-family="IBM Plex Sans, sans-serif" font-size="12">Abu Dhabi</text>
+          </g>
+          <g>
+            <circle cx="707" cy="162" r="10" fill="none" stroke="#5B87A6" stroke-width="1" opacity="0.35"/>
+            <circle cx="707" cy="162" r="5.5" fill="#5B87A6"/>
+            <text x="707" y="142" text-anchor="middle" fill="#F2EFE9" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="500">PK</text>
+            <text x="707" y="190" text-anchor="middle" fill="#9AA1AC" font-family="IBM Plex Sans, sans-serif" font-size="12">Lahore</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="grid-4 stack-mobile" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-bottom:16px;">
+        <div style="text-align:left;border-top:2px solid #C98A4B;padding-top:14px;">
+          <div style="font-size:12px;color:#63697A;font-family:'IBM Plex Mono',monospace;letter-spacing:1px;">HEADQUARTERS</div>
+          <div style="font-size:16px;font-weight:600;margin-top:4px;">New York, USA</div>
+          <div style="font-size:13px;color:#9AA1AC;margin-top:8px;line-height:1.55;">Corporate strategy, capital markets, and investor relations.</div>
+        </div>
+        <div style="text-align:left;border-top:2px solid #5B87A6;padding-top:14px;">
+          <div style="font-size:12px;color:#63697A;font-family:'IBM Plex Mono',monospace;letter-spacing:1px;">ARCHITECTURE</div>
+          <div style="font-size:16px;font-weight:600;margin-top:4px;">Bucharest, Romania</div>
+          <div style="font-size:13px;color:#9AA1AC;margin-top:8px;line-height:1.55;">Core system architecture and platform engineering leadership.</div>
+        </div>
+        <div style="text-align:left;border-top:2px solid #5B87A6;padding-top:14px;">
+          <div style="font-size:12px;color:#63697A;font-family:'IBM Plex Mono',monospace;letter-spacing:1px;">COMMERCIAL FOCUS</div>
+          <div style="font-size:16px;font-weight:600;margin-top:4px;">Abu Dhabi, UAE</div>
+          <div style="font-size:13px;color:#9AA1AC;margin-top:8px;line-height:1.55;">Go-to-market for defense, sovereign, and industrial customers.</div>
+        </div>
+        <div style="text-align:left;border-top:2px solid #5B87A6;padding-top:14px;">
+          <div style="font-size:12px;color:#63697A;font-family:'IBM Plex Mono',monospace;letter-spacing:1px;">R&amp;D</div>
+          <div style="font-size:16px;font-weight:600;margin-top:4px;">Lahore, Pakistan</div>
+          <div style="font-size:13px;color:#9AA1AC;margin-top:8px;line-height:1.55;">Core engineering team building and iterating the middleware.</div>
+        </div>
+      </div>
+
+      <!-- founding team -->
+      <div style="font-size:13px;color:#63697A;font-family:'IBM Plex Mono',monospace;letter-spacing:1px;margin-bottom:20px;">FOUNDING TEAM</div>
+      <div class="grid-2 stack-mobile" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:48px;">
+        <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:28px;background:#14171B;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="font-size:18px;font-weight:600;">Mohammad Asif</div>
+            <a href="https://www.linkedin.com/in/mohammadasif1/" aria-label="Mohammad Asif on LinkedIn" style="width:26px;height:26px;border-radius:5px;background:#F2EFE9;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#0A66C2"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.65 23 10.9 23 14.1V21h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.07 0-2.39 1.6-2.39 3.27V21h-4V9z"/></svg>
+            </a>
+          </div>
+          <div style="font-size:13.5px;color:#C98A4B;margin-top:4px;">Founder &amp; CEO · New York, USA</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:14px;line-height:1.6;">40+ years as an entrepreneur across media, telecom, and hospitality. Built Bombay Theatre, MPS Telecom, and PaylessDial. Leads fundraising, vision, and the Saudi market.</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:28px;background:#14171B;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="font-size:18px;font-weight:600;">Orlando (Razvan) Matei</div>
+            <a href="https://www.linkedin.com/in/razvan-matei-a7761122/" aria-label="Razvan Matei on LinkedIn" style="width:26px;height:26px;border-radius:5px;background:#F2EFE9;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#0A66C2"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.9 8.65 23 10.9 23 14.1V21h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.07 0-2.39 1.6-2.39 3.27V21h-4V9z"/></svg>
+            </a>
+          </div>
+          <div style="font-size:13.5px;color:#C98A4B;margin-top:4px;">Co-Founder &amp; CTO · Bucharest, Romania (EU)</div>
+          <div style="font-size:13.5px;color:#9AA1AC;margin-top:14px;line-height:1.6;">20+ years in enterprise technology. Co-founded Streamark, delivering live-streaming deployments with T-Mobile and China Mobile. Most recently Lead Architect at Vodafone, driving AI development and adoption. Holds a US patent in digital content aggregation and distribution.</div>
+        </div>
+      </div>
+
+      <!-- engineering team -->
+      <div style="font-size:13px;color:#63697A;font-family:'IBM Plex Mono',monospace;letter-spacing:1px;margin-bottom:20px;">ENGINEERING TEAM</div>
+      <div class="grid-4 stack-mobile" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px;">
+        <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:20px;">
+          <div style="font-size:14.5px;font-weight:600;">Abdorruhman Abdelwahed</div>
+          <div style="font-size:12.5px;color:#9AA1AC;margin-top:4px;">Head of Engineering · Virginia, USA</div>
+          <div style="font-size:12.5px;color:#63697A;margin-top:10px;line-height:1.5;">Full-stack, DevOps, AWS + Isaac Sim</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:20px;">
+          <div style="font-size:14.5px;font-weight:600;">Dr. Asif Khan</div>
+          <div style="font-size:12.5px;color:#9AA1AC;margin-top:4px;">Chief Science Officer · Pakistan</div>
+          <div style="font-size:12.5px;color:#63697A;margin-top:10px;line-height:1.5;">PhD Robotics, Aberystwyth UK · CRAIB lab</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:20px;">
+          <div style="font-size:14.5px;font-weight:600;">Syed Ahsan Ali</div>
+          <div style="font-size:12.5px;color:#9AA1AC;margin-top:4px;">AI Lead Engineer · Pakistan</div>
+          <div style="font-size:12.5px;color:#63697A;margin-top:10px;line-height:1.5;">Built the 92–99% detection POC in 10 days</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:20px;">
+          <div style="font-size:14.5px;font-weight:600;">Ali Rehman</div>
+          <div style="font-size:12.5px;color:#9AA1AC;margin-top:4px;">Perception &amp; Hardware · Pakistan</div>
+          <div style="font-size:12.5px;color:#63697A;margin-top:10px;line-height:1.5;">Sensor fusion, DR02 integration</div>
+        </div>
+      </div>
+      <div class="grid-2 stack-mobile" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:20px;">
+          <div style="font-size:14.5px;font-weight:600;">Yazid Musthafa</div>
+          <div style="font-size:12.5px;color:#9AA1AC;margin-top:4px;">Technical Project Manager, Robotics · Abu Dhabi, UAE</div>
+          <div style="font-size:12.5px;color:#63697A;margin-top:10px;line-height:1.5;">Gulf operations, Saudi market entry</div>
+        </div>
+        <div style="border:1px solid rgba(201,138,75,0.25);border-radius:6px;padding:20px;background:rgba(201,138,75,0.05);">
+          <div style="font-size:12px;color:#C98A4B;font-family:'IBM Plex Mono',monospace;letter-spacing:1px;">STRATEGIC ADVISOR</div>
+          <div style="font-size:14.5px;font-weight:600;margin-top:8px;">Ali Ahmed — Co-Founder &amp; CEO, Robomart</div>
+          <div style="font-size:12.5px;color:#9AA1AC;margin-top:10px;line-height:1.5;">5 generations of robots · 34 investors · hardware strategy and investor introductions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE ASK -->
+  <div id="ask" class="section-pad" style="max-width:1180px;margin:0 auto;padding:90px 40px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#5B87A6;letter-spacing:1px;margin-bottom:14px;">THE ASK</div>
+    <h2 style="font-size:38px;font-weight:600;max-width:680px;margin-bottom:48px;">Join us in building the operating layer for physical AI.</h2>
+
+    <div class="grid-2 stack-mobile" style="display:grid;grid-template-columns:1.1fr 1fr;gap:40px;">
+      <div>
+        <div style="font-size:13px;color:#63697A;font-family:'IBM Plex Mono',monospace;letter-spacing:1px;margin-bottom:18px;">USE OF FUNDS</div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#C98A4B;margin-top:8px;flex-shrink:0;"></div>
+            <div style="font-size:15px;color:#DCDFE4;line-height:1.5;">Expand the hardware driver library beyond the Unitree R1 and DR02-class platforms</div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#C98A4B;margin-top:8px;flex-shrink:0;"></div>
+            <div style="font-size:15px;color:#DCDFE4;line-height:1.5;">Grow the core engineering team across the EU and Pakistan R&amp;D hubs</div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#C98A4B;margin-top:8px;flex-shrink:0;"></div>
+            <div style="font-size:15px;color:#DCDFE4;line-height:1.5;">Launch first defense, sovereign, and industrial pilot deployments in the GCC</div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#C98A4B;margin-top:8px;flex-shrink:0;"></div>
+            <div style="font-size:15px;color:#DCDFE4;line-height:1.5;">Pilot the developer ecosystem with a small group of third-party design partners</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="border:1px solid rgba(201,138,75,0.35);border-radius:8px;padding:32px;background:linear-gradient(160deg,rgba(201,138,75,0.08),transparent);">
+        <div style="font-size:13px;color:#63697A;font-family:'IBM Plex Mono',monospace;letter-spacing:1px;margin-bottom:16px;">THE RAISE</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:700;color:#F2EFE9;">$750,000</div>
+        <div style="font-size:13.5px;color:#9AA1AC;margin-top:6px;">YC-standard post-money SAFE</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:22px;border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;">
+          <div style="display:flex;justify-content:space-between;font-size:14px;"><span style="color:#9AA1AC;">Valuation cap</span><span>$8,000,000</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;"><span style="color:#9AA1AC;">Discount</span><span>20%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;"><span style="color:#9AA1AC;">Minimum ticket</span><span>$25,000</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:14px;"><span style="color:#9AA1AC;">Target close</span><span>Q4 2026</span></div>
+        </div>
+        <a href="mailto:masif@oryx.bot" class="askbtn" style="display:block;text-align:center;margin-top:26px;background:#C98A4B;color:#0D0F12;font-weight:600;font-size:15px;padding:13px;border-radius:4px;transition:background .15s ease;">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid rgba(255,255,255,0.08);">
+    <div class="section-pad stack-mobile" style="max-width:1180px;margin:0 auto;padding:36px 40px;display:flex;justify-content:space-between;align-items:center;gap:16px;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;">ORYX</div>
+      <div style="font-size:13px;color:#63697A;">masif@oryx.bot · New York, NY</div>
+      <div style="font-size:12px;color:#4A4F5A;">Confidential — Investor Briefing</div>
+    </div>
+  </div>
+
+</div>
+
 </body>
 </html>
